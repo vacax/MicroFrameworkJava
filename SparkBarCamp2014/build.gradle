@@ -1,7 +1,10 @@
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 version = '1.0'
+
+mainClassName = "org.rd.barcamp.sparkbarcamp.main.Main"
 
 repositories {
     mavenCentral()
@@ -9,6 +12,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.sparkjava:spark-core:2.0.0'
-    compile 'com.sparkjava:spark-template-freemarker:2.0.0'
+    compile 'com.sparkjava:spark-core:2.3'
+    compile 'com.sparkjava:spark-template-freemarker:2.3'
 }

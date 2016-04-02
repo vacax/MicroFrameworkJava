@@ -8,3 +8,4 @@ gradle-app.setting
 .idea/
 *.iml
 *.iws
+/SparkBarCamp2014/.nb-gradle/
