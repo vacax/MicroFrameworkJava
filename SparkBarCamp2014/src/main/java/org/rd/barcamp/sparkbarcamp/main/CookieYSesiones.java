@@ -39,7 +39,7 @@ public class CookieYSesiones {
          */
         get("/crearCookie/:nombreCookie/:valor", (request, response)->{
             //creando cookie en para un minuto
-            response.cookie(request.params("nombreCookie"), request.params("valor"), 3600);
+            response.cookie("/", request.params("nombreCookie"), request.params("valor"), 3600, false); //incluyendo el path del cookie.
 
             return "Cookie creado con exito...";
         });

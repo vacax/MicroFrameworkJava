@@ -20,6 +20,7 @@ public class ManejoExcepciones {
         exception(NumberFormatException.class, (e, request, response) -> {
             response.status(500);
             response.body("Error convertiendo un número....");
+            e.printStackTrace();
         });
     }
 }
