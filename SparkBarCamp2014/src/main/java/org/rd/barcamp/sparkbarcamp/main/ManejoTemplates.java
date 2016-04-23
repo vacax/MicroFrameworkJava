@@ -1,5 +1,6 @@
 package org.rd.barcamp.sparkbarcamp.main;
 
+import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
 import org.rd.barcamp.sparkbarcamp.encapsulacion.Estudiante;
 import org.rd.barcamp.sparkbarcamp.servicios.FakeServices;
@@ -23,7 +24,18 @@ public class ManejoTemplates {
 
         //Indicando la carpeta por defecto.
         Configuration configuration=new Configuration();
-        configuration.setClassForTemplateLoading(ManejoTemplates.class, "/org/rd/barcamp/sparkbarcamp/recursos/templates/");
+        configuration.setClassForTemplateLoading(ManejoTemplates.class, "/templates");
+        FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine(configuration);
+
+
+        /**
+         * http://localhost:4567/formulario
+         */
+        get("/formulario/", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("titulo", "Formulario en FreeMarker");
+            return new ModelAndView(attributes, "formulario.ftl");
+        }, freeMarkerEngine);
 
         /**
          * http://localhost:4567/datosEstudiante
@@ -32,12 +44,30 @@ public class ManejoTemplates {
             //obteniendo la matricula.
             Estudiante estudiante= FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(request.params("matricula")));
 
-            Map<String, Object> attributes = new HashMap<String, Object>();
+            Map<String, Object> attributes = new HashMap<>();
             attributes.put("estudiante", estudiante);
 
             //enviando los parametros a la vista.
             return new ModelAndView(attributes, "datosEstudiante.ftl");
-        }, new FreeMarkerEngine(configuration)); //
+        }, freeMarkerEngine); //
+
+        post("/procesarFormulario/", (request, response) -> {
+            //obteniendo la matricula.
+
+            int matricula = Integer.parseInt(request.queryParams("matricula"));
+            String nombre =request.queryParams("nombre");
+            String carrera =request.queryParams("carrera");
+
+            Estudiante estudiante= new Estudiante(matricula, nombre, carrera);
+
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("titulo", "Procesando Estudiante");
+            attributes.put("estudiante", estudiante);
+
+            //enviando los parametros a la vista.
+            return new ModelAndView(attributes, "formularioProcesado.ftl");
+        }, freeMarkerEngine); //
+
     }
 
 }

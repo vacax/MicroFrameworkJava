@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
 
         //indicando los recursos publicos.
-        staticFileLocation("/org/rd/barcamp/sparkbarcamp/recursos/publico/");
+        staticFileLocation("/publico");
 
         /**
          * Hola mundo utilizando SparkJava
@@ -93,7 +93,7 @@ public class Main {
         //Ejemplos para el manejo de templates.
         new ManejoTemplates().ejemplosTemplates();
 
-
+        new ManejoTransformaciones().ejemploTransformaciones();
     }
 
     /**
