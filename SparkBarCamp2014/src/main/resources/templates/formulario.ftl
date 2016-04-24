@@ -3,7 +3,7 @@
 <head>
 <title>${titulo}</title>
 </head>
-<bod>
+<body>
     <h1>Ejemplo de formulario</h1>
     <form action="/procesarFormulario/" method="post">
          Matricula: <input name="matricula" type="number"/><br/>
@@ -11,5 +11,5 @@
          Carrera: <input name="carrera" type="text"/><br/>
         <button name="Enviar" type="submit">Enviar</button>
     </form>
-</bod>
+</body>
 </html>

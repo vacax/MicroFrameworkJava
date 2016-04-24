@@ -62,6 +62,19 @@ public class CookieYSesiones {
         });
 
         /**
+         * http://localhost:4567/invalidarSesion/
+         */
+        get("/invalidarSesion/", (request, response)->{
+            //creando cookie en para un minuto
+            Session session=request.session(true);
+            String id = session.id();
+            System.out.println("El ID de la sesion: "+id);
+            session.invalidate();
+
+            return "Sesion invalidada: "+id;
+        });
+
+        /**
          * Registra elementos en el ambito web de sesion.
          * http://localhost:4567/autenticar/barcamp/2014
          */
@@ -70,7 +83,10 @@ public class CookieYSesiones {
             Session session=request.session(true);
 
             //
-            Usuario usuario=FakeServices.getInstancia().autenticarUsuario(request.params("usuario"), request.params("contrasena"));
+            Usuario usuario= null;//FakeServices.getInstancia().autenticarUsuario(request.params("usuario"), request.params("contrasena"));
+            if(request.params("usuario").equalsIgnoreCase("barcamp") && request.params("contrasena").equalsIgnoreCase("2014")){
+                usuario = new Usuario("Barcamp", "2014");
+            }
 
             if(usuario==null){
                 halt(401,"Credenciales no validas...");

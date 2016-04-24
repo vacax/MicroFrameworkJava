@@ -3,7 +3,7 @@
 <head>
     <title>${titulo}</title>
 </head>
-<bod>
+<body>
     <h1>Procesando Formulario</h1>
     <table>
         <tbody>
@@ -12,5 +12,5 @@
         <tr><td>Apellido</td><td>${estudiante.carrera}</td></tr>
         </tbody>
     </table>
-</bod>
+</body>
 </html>

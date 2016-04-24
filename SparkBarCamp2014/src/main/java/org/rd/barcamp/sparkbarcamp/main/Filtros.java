@@ -26,7 +26,8 @@ public class Filtros {
          */
         after((request, response) -> {
             System.out.println("Filtro After -> Incluyendo Header...");
-            response.header("barcamp", "2014");
+            response.header("barcamp", "2016");
+            response.header("otroHeader", "Cualquier Cosa");
         });
 
         /**
@@ -36,7 +37,7 @@ public class Filtros {
             Usuario usuario=request.session(true).attribute("usuario");
             if(usuario==null){
                 //parada del request, enviando un codigo.
-                halt(401, "No tiene permisos para acceder");
+                halt(401, "No tiene permisos para acceder -- Lo dice el filtro....");
             }
         });
 

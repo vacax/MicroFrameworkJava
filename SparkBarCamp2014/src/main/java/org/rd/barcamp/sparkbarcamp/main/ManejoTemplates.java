@@ -42,7 +42,7 @@ public class ManejoTemplates {
          */
         get("/datosEstudiante/:matricula", (request, response) -> {
             //obteniendo la matricula.
-            Estudiante estudiante= FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(request.params("matricula")));
+            Estudiante estudiante= new Estudiante(Integer.parseInt(request.params("matricula")), "Estudiante", "Carrera");//FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(request.params("matricula")));
 
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("estudiante", estudiante);
@@ -50,6 +50,7 @@ public class ManejoTemplates {
             //enviando los parametros a la vista.
             return new ModelAndView(attributes, "datosEstudiante.ftl");
         }, freeMarkerEngine); //
+
 
         post("/procesarFormulario/", (request, response) -> {
             //obteniendo la matricula.
