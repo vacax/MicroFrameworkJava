@@ -55,9 +55,11 @@ public class ManejoTemplates {
         post("/procesarFormulario/", (request, response) -> {
             //obteniendo la matricula.
 
+            String variableOculta = request.queryParams("variable_oculta");
             int matricula = Integer.parseInt(request.queryParams("matricula"));
             String nombre =request.queryParams("nombre");
             String carrera =request.queryParams("carrera");
+            System.out.println("La variable Oculta: "+variableOculta);
 
             Estudiante estudiante= new Estudiante(matricula, nombre, carrera);
 
