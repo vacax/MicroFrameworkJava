@@ -19,7 +19,7 @@ public class Main {
         staticFileLocation("/publico");
 
         /**
-         * Hola mundo utilizando SparkJava
+         * Hola mundo utilizando  SparkJava
          */
         get("/", (request, response) -> "Hola Mundo Barcamp 2014");
 

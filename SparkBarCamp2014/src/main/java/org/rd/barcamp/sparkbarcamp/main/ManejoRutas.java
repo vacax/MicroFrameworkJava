@@ -25,11 +25,11 @@ public class ManejoRutas {
         });
 
         post("/rutas/", (request, reponse) -> {
-            return "Ejemplo de rutas...";
+            return "Ejemplo de rutas... POST";
         });
 
         put("/rutas/", (request, reponse) -> {
-            return "Ejemplo de rutas...";
+            return "Ejemplo de rutas... PUT";
         });
 
         delete("/rutas/", (request, reponse) -> {
