@@ -7,6 +7,7 @@ import spark.Route;
 import java.util.Set;
 
 import static spark.Spark.*;
+import static spark.debug.DebugScreen.enableDebugScreen;
 
 /**
  * Hola Mundo Barcamp 2014
@@ -16,7 +17,11 @@ public class Main {
     public static void main(String[] args) {
 
         //indicando los recursos publicos.
-        staticFileLocation("/publico");
+        //staticFiles.location("/META-INF/resources"); //para utilizar los WebJars.
+        staticFiles.location("/publico");
+
+        //Linea para agregar la pantalla de debug. En productivo se debe quitar.
+        enableDebugScreen();
 
         /**
          * Hola mundo utilizando  SparkJava
@@ -88,7 +93,7 @@ public class Main {
         new Filtros().aplicarFiltros();
 
         //Ejemplo para el manejo de las excepciones.
-        new ManejoExcepciones().ejemplosManejoExcepciones();
+        //new ManejoExcepciones().ejemplosManejoExcepciones(); //Deshabilitado para ver la ventana de debug.
 
         //Ejemplos para el manejo de templates.
         new ManejoTemplates().ejemplosTemplates();

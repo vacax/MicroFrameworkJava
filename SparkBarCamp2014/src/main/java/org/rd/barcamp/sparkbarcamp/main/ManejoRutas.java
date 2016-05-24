@@ -21,7 +21,7 @@ public class ManejoRutas {
          * La ruta: "/rutas/"
          */
         get("/rutas/", (request, reponse) -> {
-            return "Ejemplo de rutas...";
+            return "Ejemplo de rutas... GET";
         });
 
         post("/rutas/", (request, reponse) -> {
@@ -33,11 +33,11 @@ public class ManejoRutas {
         });
 
         delete("/rutas/", (request, reponse) -> {
-            return "Ejemplo de rutas...";
+            return "Ejemplo de rutas... DELETE";
         });
 
         options("/rutas/", (request, reponse) -> {
-            return "Ejemplo de rutas...";
+            return "Ejemplo de rutas... OPTIONS";
         });
 
 
@@ -89,8 +89,8 @@ public class ManejoRutas {
             String matriculaDestino = comodines[1];
 
             //Omitiendo validaciones....
-            Estudiante origen= new Estudiante(Integer.parseInt(request.params("matricula")), "Est1", "ISC");//FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(request.params("matricula")));
-            Estudiante destino = new Estudiante(Integer.parseInt(matriculaDestino), "Est1", "ISC"); //FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(matriculaDestino));
+            Estudiante origen= FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(request.params("matricula")));
+            Estudiante destino = FakeServices.getInstancia().getEstudianteMatricula(Integer.parseInt(matriculaDestino));
 
             return String.format("Monto Transferido: $s, del Estudiante %s al %s, realizado con éxito", montoOrigen, origen.getNombre(), destino.getNombre());
         });

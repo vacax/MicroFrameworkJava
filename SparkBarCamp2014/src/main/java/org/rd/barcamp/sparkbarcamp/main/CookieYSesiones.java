@@ -85,15 +85,14 @@ public class CookieYSesiones {
             //
             Usuario usuario= null;//FakeServices.getInstancia().autenticarUsuario(request.params("usuario"), request.params("contrasena"));
             if(request.params("usuario").equalsIgnoreCase("barcamp") && request.params("contrasena").equalsIgnoreCase("2014")){
+                //Buscar el usuario en la base de datos..
                 usuario = new Usuario("Barcamp", "2014");
-            }
-
-            if(usuario==null){
+            }else{
                 halt(401,"Credenciales no validas...");
             }
 
             session.attribute("usuario", usuario);
-            response.redirect("/zonaadmin/");
+            response.redirect("/zonaadmin/?param1=adasdasd");
 
             return "";
         });

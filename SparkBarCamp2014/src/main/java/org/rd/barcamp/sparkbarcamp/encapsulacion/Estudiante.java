@@ -5,9 +5,9 @@ package org.rd.barcamp.sparkbarcamp.encapsulacion;
  */
 public class Estudiante {
 
-    int matricula;
-    String nombre;
-    String carrera;
+    private int matricula;
+    private  String nombre;
+    private  String carrera;
 
     /**
      *
