@@ -13,6 +13,10 @@ public class ManejoTransformaciones {
 
     public void ejemploTransformaciones(){
 
+        get("/estudianteJsonSimple/", (request, response) -> {
+            return new Estudiante(20011136, "Carlos Camacho", "ISC");
+        });
+
         get("/estudianteJson/", (request, response) -> {
             return new Estudiante(20011136, "Carlos Camacho", "ISC");
         }, new JsonTransformer());

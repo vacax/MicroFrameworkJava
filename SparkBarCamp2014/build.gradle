@@ -23,3 +23,8 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
 }
+
+/*
+task stage {
+    dependsOn installDist
+}*/

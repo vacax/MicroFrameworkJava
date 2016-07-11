@@ -1,9 +1,12 @@
 package org.rd.barcamp.sparkbarcamp.main;
 
+import org.rd.barcamp.sparkbarcamp.ws.CalculadoraWs;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.Spark;
 
+import javax.xml.ws.Endpoint;
 import java.util.Set;
 
 import static spark.Spark.*;
@@ -16,12 +19,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Seteando el puerto en Heroku
+        port(getHerokuAssignedPort());
+
         //indicando los recursos publicos.
         //staticFiles.location("/META-INF/resources"); //para utilizar los WebJars.
         staticFiles.location("/publico");
 
         //Linea para agregar la pantalla de debug. En productivo se debe quitar.
         enableDebugScreen();
+
+
 
         /**
          * Hola mundo utilizando  SparkJava
@@ -115,6 +123,18 @@ public class Main {
             salida+=String.format("Parametro[%s] = %s <br/>", param, request.queryParams(param));
         }
         return salida;
+    }
+
+    /**
+     * Metodo para setear el puerto en Heroku
+     * @return
+     */
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 
 }
