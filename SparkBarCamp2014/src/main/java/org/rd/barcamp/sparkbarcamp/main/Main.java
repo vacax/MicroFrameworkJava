@@ -1,6 +1,5 @@
 package org.rd.barcamp.sparkbarcamp.main;
 
-import org.rd.barcamp.sparkbarcamp.ws.CalculadoraWs;
 import spark.Request;
 import spark.Response;
 import spark.Route;
