@@ -12,10 +12,15 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.sparkjava:spark-core:2.5'
-    compile 'com.sparkjava:spark-template-freemarker:2.3'
-    compile 'org.freemarker:freemarker:2.3.23'
+    //Spark.
+    compile 'com.sparkjava:spark-core:2.6.0'
+    compile 'com.sparkjava:spark-template-freemarker:2.5.5'
+    compile 'com.sparkjava:spark-template-thymeleaf:2.5.5'
+    compile 'org.freemarker:freemarker:2.3.26'
+    compile 'org.thymeleaf:thymeleaf:3.0.5.RELEASE'
+    // Pagina Error para Skarp: https://github.com/perwendel/spark-debug-tools
     compile 'com.sparkjava:spark-debug-tools:0.5'
+    //Gson para transformar los objetos a JSON.
     compile 'com.google.code.gson:gson:2.6.2'
     //compile 'org.webjars:bootstrap:3.3.6', //existe un bug que no permite varias rutas, están metiendo mano.
 }

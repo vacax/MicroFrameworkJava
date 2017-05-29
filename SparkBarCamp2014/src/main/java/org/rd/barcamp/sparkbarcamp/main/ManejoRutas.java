@@ -95,5 +95,35 @@ public class ManejoRutas {
             return String.format("Monto Transferido: $s, del Estudiante %s al %s, realizado con éxito", montoOrigen, origen.getNombre(), destino.getNombre());
         });
 
+        /**
+         * Permite agrupar direcciones, muy importante si estamos trabajando
+         * sobre REST.
+         */
+        path("/api", () -> {
+            before("/*", (q, a) -> System.out.println("Petición realizada al API."));
+
+            /**
+             * dentro de API, tendremos uno de correo.
+             * http://localhost:4567/api/email/
+             */
+            path("/email", () -> {
+                get("/",       (request, response) -> "API Email");
+                post("/agregar",       (request, response) -> "Agregando Correo");
+                put("/modificar",     (request, response) -> "Actualizando Correo");
+                delete("/eliminar",  (request, response) -> "Eliminando Correo");
+            });
+
+            /**
+             * dentro de API, tendremos el manejo de usuario.
+             * http://localhost:4567/api/usuario/
+             */
+            path("/usuario", () -> {
+                get("/",      (request, response) -> "API Usuario");
+                post("/agregar",      (request, response) -> "Agregando Usuario");
+                put("/modificar",     (request, response) -> "Modificando Usuario");
+                delete("/eliminar", (request, response) -> "Eliminando Usuario");
+            });
+        });
+
     }
 }

@@ -2,6 +2,10 @@ package org.rd.barcamp.sparkbarcamp.main;
 
 import org.rd.barcamp.sparkbarcamp.encapsulacion.Usuario;
 
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static spark.Spark.*;
 
 /**
@@ -26,8 +30,27 @@ public class Filtros {
          */
         after((request, response) -> {
             System.out.println("Filtro After -> Incluyendo Header...");
-            response.header("barcamp", "2016");
+            response.header("barcamp", ""+new SimpleDateFormat("yyyy").format(new Date()));
             response.header("otroHeader", "Cualquier Cosa");
+
+            if(request.queryParams("pararFiltro")!=null){
+                System.out.println("Parando la ejecución del filtro...");
+                halt(); //
+            }
+
+            response.header("profesor", "Carlos Camacho");
+        });
+
+        /**
+         * Es visualizado como un bloque siempre se va a ejecutar
+         * puede ser visto como finally de un try catch.
+         */
+        afterAfter((request, response) -> {
+            HttpServletResponse raw = response.raw();
+            if(raw.getHeader("profesor") == null){
+                response.header("profesor", "Carlos Camacho");
+                response.header("ejecutado", "bloque afterAfter");
+            }
         });
 
         /**

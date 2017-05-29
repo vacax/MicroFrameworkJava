@@ -3,9 +3,7 @@ package org.rd.barcamp.sparkbarcamp.main;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import spark.Spark;
 
-import javax.xml.ws.Endpoint;
 import java.util.Set;
 
 import static spark.Spark.*;
@@ -53,7 +51,7 @@ public class Main {
                     System.out.println(""+header+" = "+request.headers(header));
                 }
                 //
-                //response.status(201);
+                response.status(201);
 
                 //
                 return "Otra llamada";
@@ -100,10 +98,10 @@ public class Main {
         new Filtros().aplicarFiltros();
 
         //Ejemplo para el manejo de las excepciones.
-        //new ManejoExcepciones().ejemplosManejoExcepciones(); //Deshabilitado para ver la ventana de debug.
+        new ManejoExcepciones().ejemplosManejoExcepciones(); //Deshabilitado para ver la ventana de debug.
 
         //Ejemplos para el manejo de templates.
-        new ManejoTemplates().ejemplosTemplates();
+        new ManejoTemplates().manejoTemplate();
 
         new ManejoTransformaciones().ejemploTransformaciones();
     }
