@@ -73,7 +73,7 @@ public class Main {
          * http://localhost:4567/parametros?param1=valor1&param2=valor2&paramN=valorN
          */
         get("/parametros/", (request, response) -> {
-            return procesarParametros(request, response);
+            return procesarParametros(request, response); //encapsular las petición y las respuetas.
         });
 
         post("/parametros/", (request, response) -> {
