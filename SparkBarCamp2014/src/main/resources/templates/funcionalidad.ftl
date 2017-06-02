@@ -10,6 +10,11 @@
           Hola Sr. Carlos Camacho
      </#if>
 
+    <#if usuario.usuario == "asdad">
+    No debe presentarse....
+    </#if>
+
+
     <p>
        La cantidad de estudiantes: ${listaEstudiante?size}
         <table>
