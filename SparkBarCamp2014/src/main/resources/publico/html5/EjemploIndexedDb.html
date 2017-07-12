@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo IndexedDb</title>
+    <script>
+        //dependiendo el navegador busco la referencia del objeto.
+        var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB
+
+        // indicamos el nombre y la versión
+        var dataBase = indexedDB.open("internet_avanzado", 1);
+        var estudiantes;
+
+        //se ejecuta la primera vez que se crea la estructura
+        dataBase.onupgradeneeded = function (e) {
+            console.log("Creando la estructura de la tabla");
+            //obteniendo la conexión activa
+            active = dataBase.result;
+            //creando la colección:
+            estudiantes = active.createObjectStore("estudiantes", { keyPath : 'id', autoIncrement : true });
+            //creando una nueva lista.
+            estudiantes.createIndex('por_matricula', 'matricula', {unique : true});
+        };
+
+        dataBase.onsuccess = function (e) {
+            alert('Base de datos cargada correctamente');
+        }
+        
+        dataBase.onerror = function (e) {
+            alert('Error cargando la base de datos');
+        }
+
+        function add() {
+            var active = dataBase.result;
+            var data = active.transaction(["estudiantes"], "readwrite");
+            var object = data.objectStore("estudiantes");
+
+            
+            var request = object.put({
+                matricula: 20011136,
+                nombre: "Carlos Camacho",
+                carrera: "ITT"
+            });
+
+            request.onerror = function (e) {
+                alert(request.error.name + '\n\n' + request.error.message);
+            };
+
+            data.oncomplete = function (e) {
+                document.querySelector("#matricula").value = '';
+                alert('Objeto agregado correctamente');
+            };
+
+        }
+        
+    </script>
+</head>
+<body>
+    Matricula: <input type="number" id="matricula"/>
+    <button onclick="add()">Guardar</button>
+</body>
+</html>
