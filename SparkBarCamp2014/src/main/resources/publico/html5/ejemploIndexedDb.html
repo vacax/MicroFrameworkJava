@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="/html5/sinconexion.appcache">
 <head>
     <meta charset="UTF-8">
     <title>Ejemplo IndexedDb</title>
@@ -9,6 +9,7 @@
 
         //indicamos el nombre y la versión
         var dataBase = indexedDB.open("programacion_web", 1);
+
 
         //se ejecuta la primera vez que se crea la estructura
         //o se cambia la versión de la base de datos.
@@ -293,5 +294,6 @@
     <button onclick="borrarEstudiante()">Borrar Estudiante</button>
     <button onclick="cambiarNombreEstudiante()">Modificar Nombre Estudiante</button>
     <div id="listaEstudiante"></div>
+    <a href="/html5/ejemploGeoLocalizacion.html">Ir al ruta Geolocalizacion</a>
 </body>
 </html>
