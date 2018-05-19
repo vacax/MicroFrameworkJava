@@ -72,11 +72,11 @@ public class Main {
          * Obteniendo los parametros...
          * http://localhost:4567/parametros?param1=valor1&param2=valor2&paramN=valorN
          */
-        get("/parametros/", (request, response) -> {
+        get("/parametros", (request, response) -> {
             return procesarParametros(request, response); //encapsular las petición y las respuetas.
         });
 
-        post("/parametros/", (request, response) -> {
+        post("/parametros", (request, response) -> {
              return procesarParametros(request, response);
         });
 
@@ -104,6 +104,9 @@ public class Main {
         new ManejoTemplates().manejoTemplate();
 
         new ManejoTransformaciones().ejemploTransformaciones();
+
+        //
+        new ManejoDescarga().rutas();
     }
 
     /**

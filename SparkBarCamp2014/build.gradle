@@ -13,7 +13,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     //Spark.
-    compile 'com.sparkjava:spark-core:2.6.0'
+    compile 'com.sparkjava:spark-core:2.7.2'
     compile 'com.sparkjava:spark-template-freemarker:2.5.5'
     compile 'com.sparkjava:spark-template-thymeleaf:2.5.5'
     compile 'org.freemarker:freemarker:2.3.26-incubating'
@@ -23,6 +23,7 @@ dependencies {
     //Gson para transformar los objetos a JSON.
     compile 'com.google.code.gson:gson:2.6.2'
     //compile 'org.webjars:bootstrap:3.3.6', //existe un bug que no permite varias rutas, están metiendo mano.
+    compile "org.slf4j:slf4j-simple:1.7.21"
 }
 
 task wrapper(type: Wrapper) {
