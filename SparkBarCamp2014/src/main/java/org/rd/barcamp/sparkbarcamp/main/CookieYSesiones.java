@@ -58,7 +58,7 @@ public class CookieYSesiones {
             contador++;
             session.attribute("contador", contador);
 
-            return String.format("Usted a visitado está pagina %d", contador);
+            return String.format("Usted a visitado está pagina %d, sesión ID #%s", contador, session.id());
         });
 
         /**

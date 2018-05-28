@@ -24,6 +24,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     //compile 'org.webjars:bootstrap:3.3.6', //existe un bug que no permite varias rutas, están metiendo mano.
     compile "org.slf4j:slf4j-simple:1.7.21"
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 }
 
 task wrapper(type: Wrapper) {

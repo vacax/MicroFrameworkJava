@@ -88,6 +88,11 @@ public class Main {
          */
         get("/zonaadmin/", (request, response) -> "Zona Admin Barcamp 2014");
 
+        get("/loop", (request, response) -> {
+            response.redirect("/loop");
+            return "";
+        });
+
         //Ejemplos de rutas
         new ManejoRutas().ejemplosRutas();
 
