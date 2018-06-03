@@ -16,7 +16,7 @@ public class ManejoExcepciones {
          * http://localhost:4567/errorConversion/kasdj
          */
         get("/errorConversion/:entero", (request, response) -> {
-            int entero = Integer.parseInt(request.params("numero"));
+            int entero = Integer.parseInt(request.params("entero"));
             return "El numero recibido: "+entero;
         });
 
@@ -29,6 +29,12 @@ public class ManejoExcepciones {
             response.body("Error convertiendo un número....");
             e.printStackTrace();
         });
+
+        /*exception(Exception.class, (e, request, response) -> {
+            response.status(500);
+            response.body("Todas las excepciones....");
+            e.printStackTrace();
+        });*/
 
         /**
          * Ruta para probar el plugin para visualizar los errores:
