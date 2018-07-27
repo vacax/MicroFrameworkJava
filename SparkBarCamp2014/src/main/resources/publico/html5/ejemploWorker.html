@@ -21,12 +21,7 @@
         }
 
         worker.onmessage = function (e) {
-            //console.log("El tipo:"+e.data.tipo);
-            //if(e.data.tipo == "msg") {
                 document.getElementById('result').textContent = e.data;
-            //}else{
-             //   document.getElementById('fecha').textContent = e.data.mensaje;
-            //}
         };
         
         

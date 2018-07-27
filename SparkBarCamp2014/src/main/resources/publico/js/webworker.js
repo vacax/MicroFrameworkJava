@@ -8,7 +8,7 @@ this.addEventListener('message', function(e) {
     switch (data.cmd) {
         case 'inicio':
             console.log("Presiono inicio..");
-            setInterval(function () {
+            setInterval(function () {  //proceso que se ejecuta periodicamente.
                 this.postMessage('{"tipo": "fecha","mensaje" : "La fecha es: '+new Date().toUTCString()+'}');
             }, 1000);
             

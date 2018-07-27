@@ -4,6 +4,8 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import static spark.Spark.*;
@@ -88,9 +90,19 @@ public class Main {
          */
         get("/zonaadmin/", (request, response) -> "Zona Admin Barcamp 2014");
 
+        /**
+         * Llamada que provoca un error por redirect infinitos.
+         */
         get("/loop", (request, response) -> {
             response.redirect("/loop");
             return "";
+        });
+
+        /**
+         * Retorna la fecha actual, para ser utilizandos llamadas ajax.
+         */
+        get("/fecha", (request, response) -> {
+            return ""+new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
         });
 
         //Ejemplos de rutas
