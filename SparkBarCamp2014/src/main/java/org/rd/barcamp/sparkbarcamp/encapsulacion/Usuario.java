@@ -5,8 +5,8 @@ package org.rd.barcamp.sparkbarcamp.encapsulacion;
  */
 public class Usuario {
 
-    String usuario;
-    String contrasena; //
+    private String usuario;
+    private String contrasena; //
 
     public Usuario() {
     }
@@ -32,3 +32,4 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 }
+

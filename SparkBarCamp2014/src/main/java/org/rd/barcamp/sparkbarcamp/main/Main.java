@@ -21,6 +21,7 @@ public class Main {
         //Seteando el puerto en Heroku
         port(getHerokuAssignedPort());
 
+        
         //indicando los recursos publicos.
         //staticFiles.location("/META-INF/resources"); //para utilizar los WebJars.
         staticFiles.location("/publico");
@@ -71,6 +72,19 @@ public class Main {
         });
 
         /**
+         * Equivale el modelo 1 de desarrollo APP Web. Decada de los 90.
+         */
+        get("/formaAntigua", (request, response)->{
+           String salida ="";
+           salida += "<html><head><title>Forma Antigua</title></head><body>";
+           salida += "<h1>Ejemplo de programación en los 90</h1>";
+           salida += "<hr/>";
+           salida += "</body></html>";
+           response.header("Content-Type", "text/html");
+           return salida;
+        });
+
+        /**
          * Obteniendo los parametros...
          * http://localhost:4567/parametros?param1=valor1&param2=valor2&paramN=valorN
          */
@@ -79,7 +93,7 @@ public class Main {
         });
 
         post("/parametros", (request, response) -> {
-             return procesarParametros(request, response);
+            return procesarParametros(request, response);
         });
 
 

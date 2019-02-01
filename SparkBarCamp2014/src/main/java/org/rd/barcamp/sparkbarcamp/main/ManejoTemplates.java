@@ -32,7 +32,7 @@ public class ManejoTemplates {
     }
 
     /**
-     * FreeMarker utiliza por defecto la carpeta: spark/template/freemarker
+     * FreeMarker utiliza por defecto la carpeta: spark/template/freemarker dentro del resources
      * En el ejemplo se cambia con fines de demostración.
      */
     public void ejemplosTemplatesFreeMarker(){
